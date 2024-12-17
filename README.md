@@ -37,12 +37,35 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 /* write all the steps invloved */
 
 **PROGRAM**
-
+```
+module siso(din, clk, rst, dout);
+ input din;
+ input clk;
+ input rst;
+ output dout;
+reg dout;
+reg [7:0]x;
+always @ (posedge(clk) or posedge(rst)) begin
+if (rst==1'b1)
+begin
+dout=8'hzz;
+end
+else
+begin
+x={x[6:0],din};
+dout=x[7];
+end
+end
+endmodule
+```
 /* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
 */
 
 **RTL LOGIC FOR FLIPFLOPS**
+![Screenshot 2024-12-17 155821](https://github.com/user-attachments/assets/430ff7d9-c84f-4a1d-aa0d-343bb1db2e57)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+![Screenshot 2024-12-17 160122](https://github.com/user-attachments/assets/b403080c-bb4b-4d2a-bbe8-6b6bf7ef753c)
 
 **RESULTS**
+The SR flip-flop was implemented successfully using Verilog, and its functionality was validated through simulation. The output matches the expected functional table of the SR flip-flop.
